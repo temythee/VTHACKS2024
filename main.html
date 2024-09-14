@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Name</title>
+  <link rel="stylesheet" href="mainstyle.css"/>
+</head>
+
+<body>
+
+  <section class = "websitetitle">
+    <header> 
+      Looking to form a dream team or join one?
+    </header>
+  </section>
+
+  <section>
+    <p class="reveal-type">
+      You're looking at the right place.
+    </p>
+  </section>
+
+  <section>
+    <p class="reveal-type">
+      Whether you're launching a startup, tackling a group assignment, or pursuing a personal passion, 
+      our advanced matching algorithm assigns you perfect partners based on skills, experience, and project goals. 
+    </p>
+  </section>
+
+  <section>
+    <p class="reveal-type">
+      Connect with top talent and build your dream team effortlessly. 
+    </p>
+  </section>
+  
+  <section>
+    <p class="reveal-type">
+      Join now and turn your vision into reality with the right team by your side!
+    </p>
+  </section>
+
+  <section>
+    <a href="http://127.0.0.1:5500/login.html">
+      <button class="joinbutton">JOIN</button>
+    </a>
+  </a>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script> 
+
+  <script>
+
+    gsap.registerPlugin(ScrollTrigger)
+    
+    const splitTypes = document.querySelectorAll('.reveal-type')
+
+    splitTypes.forEach((char,i) => { 
+      
+      const text = new SplitType(char, { types: 'chars'})
+
+      gsap.from(text.chars, {
+        scrollTrigger: {
+          trigger: char,
+          start: 'top 90%',
+          end: 'top 50%%',
+          scrub: true,
+          markers: false
+        },
+        scaleY: 0,
+        y: -20,
+        transformOrigin: 'top',
+        stagger: 0.1
+      })
+
+    })
+
+    const lenis = new Lenis()
+
+    lenis.on('scroll', (e) => {
+      console.log(e)
+    })
+
+  function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
+
+  requestAnimationFrame(raf)
+  </script>
+
+</body>
+
+</html>
